@@ -1,0 +1,32 @@
+<?php
+is_home();
+is_front_page();
+the_post();
+have_posts();
+the_post();
+the_permalink();
+has_post_thumbnail();
+the_post_thumbnail_url();
+get_default_thumbnail_url();
+the_title();
+the_content();
+wp_link_pages();
+comments_template();
+
+get_the_excerpt(); ///**get always return value so its nee to echo like echo get_the_excerpt()*/;
+get_the_author();
+get_the_author_meta();
+get_avatar();
+get_the_date();
+get_the_time();
+get_the_modified_date();
+get_the_modified_time();
+get_the_category_list();
+get_the_tag_list();
+get_the_term_list();
+get_permalink();
+get_post_permalink();
+get_the_permalink();
+get_template_part('template-parts/no-content');
+current_user_can( 'publish_posts' );
+get_search_form();

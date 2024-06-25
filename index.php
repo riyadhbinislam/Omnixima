@@ -1,40 +1,63 @@
 <?php get_header();?>
 
-<section>
-    <div class="container">
-        <h2>Get The Content</h2>
-        <div class="row">
-            <div class="col-md-12 post_col">
+<div id="primary">
+    <main id="main" class="site-main" role="main">
+        <?php
+        if ( have_posts() ) :
+            ?>
+            <div class="container">
                 <?php
-                    if (have_posts()):
-                        while(have_posts()) : the_post();
+                if ( is_home() && ! is_front_page() ) {
+                    ?>
+                    <header class="mb-5">
+                        <h1 class="page-title ">
+                            <?php single_post_title(); ?>
+                        </h1>
+                    </header>
+                    <?php
+                }
                 ?>
-                    <div class="blog_area">
-                        <div class="post_thumb">
-                            <a href="<?php the_permalink();?>"><?php echo the_post_thumbnail('post-thumbnails');?></a>
-                        </div>
-                        <div class="post_details">
-                            <h2><a href="<?php the_permalink();?>"><?php the_title() ;?></a></h2>
-                            <?php echo get_the_excerpt();?>
-                        </div>
-                    </div>
+
                 <?php
+                $index         = 0;
+                $no_of_columns = 3;
+                ?>
+
+                <div class="row">
+                    <?php
+                    while ( have_posts() ) : the_post();
+
+                        if ( $index !== 0 && $index % $no_of_columns === 0 ) {
+                            ?>
+                            </div><div class="row mb-3" >
+                            <?php
+                        }
+                        ?>
+                        <div class="col-lg-4 col-md-6 col-sm-12">
+                            <?php
+                            get_template_part( 'template-parts/content' );
+                            ?>
+                        </div>
+                        <?php
+
+                        $index++;
+
                     endwhile;
-                    else:
-                        _e('No Post Found');
-                    endif;
+                    ?>
+                </div>
+
+                <?php
+
+                else :
+
+                    get_template_part( 'template-parts/content-none' );
+
+                endif;
+
+                omnixima_pagination();
                 ?>
             </div>
-            <div id="col-md-12 page_nav">
-                <?php if (function_exists('omni_pagenav')) {
-                    omni_pagenav();
-                } else { ?>
-                    <?php next_posts_link('Next'); ?>
-                    <?php previous_posts_link('Previous'); ?>
-                <?php } ?>
-            </div>
-        </div>
-    </div>
-</section>
+    </main>
+</div>
 
 <?php get_footer();?>

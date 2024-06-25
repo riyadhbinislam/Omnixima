@@ -17,15 +17,11 @@
 <?php if(function_exists('wp_body_open')){wp_body_open();} ?>
 
 <header id="header_area" class="<?php echo get_theme_mod('omni_menu_position');?>">
-    <div class="container">
-        <div class="row">
-            <div class=" logo-col">
-                <a href="<?php echo home_url();?>"><img src="<?php echo get_theme_mod('omni_logo') ;?>" alt=""></a>
-            </div>
-
-            <div class="col nav-col">
-                    <?php echo wp_nav_menu( array('theme_location' => 'main_menu', 'menu_id' => 'nav') );?>
-            </div>
-        </div>
-    </div>
+  <div class="container">
+        <?php include('template-parts/header/nav.php');?>
+  </div>
 </header>
+
+<main id="main" class="site-main" role="main">
+
+

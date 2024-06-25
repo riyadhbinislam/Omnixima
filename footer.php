@@ -1,9 +1,11 @@
+</main>
 <footer id="footer_area">
-        <div class="row">
-            <div class="col copyright">
-                <p><?php echo get_theme_mod('omni_footer_settings') ;?></p>
-            </div>
-        </div>
+    <div class="container">
+        <?php
+        if (is_active_sidebar( 'sidebar-2' )){?>
+            <aside><?php dynamic_sidebar( 'sidebar-2' ); ?></aside>
+        <?php } ?>
+    </div>
 </footer>
 
 

@@ -1,12 +1,25 @@
 <?php
-/*My Theme Functions*/
-include_once 'function/defults.php';
+/**
+ * Functions and definitions
+ *
+ * @package Omnixima
+ */
 
-//Theme CSS and Js Linking
-include_once 'function/enqueue.php';
+// Define constants for directory paths and URIs
+if ( ! defined( 'OMNIXIMA_DIR_URI' ) ) {
+    define( 'OMNIXIMA_DIR_URI', get_template_directory_uri() );
+}
 
-//Theme Function Header Area
-include_once 'function/theme_function.php';
+if ( ! defined( 'OMNIXIMA_DIR_PATH' ) ) {
+    define( 'OMNIXIMA_DIR_PATH', get_template_directory() );
+}
 
-//Menu Register
-include_once 'function/menuregister.php';
+// Autoloader function
+require_once OMNIXIMA_DIR_PATH . '/inc/helpers/autoloader.php';
+require_once OMNIXIMA_DIR_PATH . '/inc/helpers/template-tags.php';
+
+// Initialize the theme
+OMNIXIMA\inc\OMNI_THEME::get_instance();
+
+include "function/defults.php";
+
